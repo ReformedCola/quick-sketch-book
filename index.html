@@ -8,66 +8,31 @@
     <title>Easy Sketch</title>
 </head>
 <body>
-    <canvas id="canvas" width="100" height="100"></canvas>
-    <script>
-        // 画线
-        let canvas = document.getElementById("canvas");
-        canvas.width = document.documentElement.clientWidth;
-        canvas.height = document.documentElement.clientHeight;
-        let ctx = canvas.getContext("2d");
-        ctx.fillStyle = "black";
-        ctx.strokeStyle = 'none';
-        ctx.lineWidth = 8;
-        ctx.lineCap = "round";
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <div class="actions">
+        <svg>
 
-        let painting = false;
-        let last;
+        </svg>
+        <svg>
 
-        function drawLine(x1, y1, x2, y2) {
-            ctx.beginPath();
-            ctx.moveTo(x1, y1);
-            ctx.lineTo(x2, y2);
-            ctx.stroke();
-        }
+        </svg>
+        <svg>
 
-        var isTouchDevice = 'ontouchstart' in document.documentElement;
-        console.log(isTouchDevice);
+        </svg>
+        <svg>
 
-        if(isTouchDevice)
-        {
-            canvas.ontouchstart = (e) => {
-                let x = e.touches[0].clientX;
-                let y = e.touches[0].clientY;
-                last = [x, y];
-            }
-            canvas.ontouchmove = (e) => {
-                let x = e.touches[0].clientX;
-                let y = e.touches[0].clientY;
-                drawLine(last[0], last[1], x, y);
-                last = [x, y];
-            }
-        } 
-        else
-        {
-            canvas.onmousedown = (e) =>{
-                painting = true;
-                last = [e.clientX, e.clientY];
-            }
-        
-            canvas.onmousemove = (e) => {
-                if(painting === true)
-                {
-                    drawLine(last[0], last[1], e.clientX, e.clientY);
-                    last = [e.clientX, e.clientY];
-                }
-            }
-
-            canvas.onmouseup = () => {
-                painting = false;
-            }
-        }
-
-    </script>
+        </svg>
+    </div>
+    <ol class="colors">
+        <li id="black" class="black active"></li>
+        <li id="red" class="red"></li>
+        <li id="green" class="green"></li>
+        <li id="blue" class="blue"></li>
+    </ol>
+    <ol class="sizes">
+        <li id="thin" class="thin active"></li>
+        <li id="thick" class="thick"></li>
+    </ol>
     <script src="index.js"></script>
 </body>
 </html>
