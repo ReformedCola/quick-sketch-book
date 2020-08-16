@@ -8,7 +8,7 @@ ctx.lineWidth = 8
 ctx.lineCap = 'round'
 
 let clear = document.getElementById('clear')
-
+let save = document.getElementById('save')
 
 let painting = false
 let last = []
@@ -59,4 +59,18 @@ function clearAll() {
   }
 }
 
+function saveImage() {
+  save.onclick = function () {
+    let url = canvas.toDataURL('image/png')
+    let a = document.createElement('a')
+    document.body.appendChild(a)
+    a.href = url
+    a.download = 'Result'
+    a.target = '_blank'
+    a.click()
+  }
+}
+
 clearAll()
+
+saveImage()
