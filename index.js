@@ -22,38 +22,7 @@ ctx.fillStyle = 'black'
 ctx.strokeStyle = 'none'
 ctx.lineCap = 'round'
 
-let isTouchDevice = 'ontouchstart' in document.documentElement
-console.log(isTouchDevice)
-
-if (isTouchDevice) {
-  canvas.ontouchstart = (e) => {
-    let x = e.touches[0].clientX
-    let y = e.touches[0].clientY
-    last = [x, y]
-  }
-  canvas.ontouchmove = (e) => {
-    let x = e.touches[0].clientX
-    let y = e.touches[0].clientY
-    drawLine(last[0], last[1], x, y)
-    last = [x, y]
-  }
-} else {
-  canvas.onmousedown = (e) => {
-    painting = true
-    last = [e.clientX, e.clientY]
-  }
-
-  canvas.onmousemove = (e) => {
-    if (painting === true) {
-      drawLine(last[0], last[1], e.clientX, e.clientY)
-      last = [e.clientX, e.clientY]
-    }
-  }
-
-  canvas.onmouseup = () => {
-    painting = false
-  }
-}
+mouseOrTouch(canvas)
 
 function colorSwitcher() {
   black.onclick = function () {
@@ -126,6 +95,61 @@ clearAll()
 
 saveImage()
 
+
+
+sizeSwitcher()
+
+colorSwitcher()
+
+function mouseOrTouch(canvas) {
+  let isTouchDevice = 'ontouchstart' in document.documentElement
+  if (isTouchDevice) {
+    touchDraw(canvas)
+  } else {
+    mouseDraw(canvas)
+  }
+}
+
+
+
+
+function mouseDraw(canvas) {
+  console.log(canvas)
+  canvas.onmousedown = (e) => {
+    let x = e.clientX
+    let y = e.clientY
+    painting = true
+    last = [x, y]
+  }
+
+  canvas.onmousemove = (e) => {
+    let x = e.clientX
+    let y = e.clientY
+    if (painting === true) {
+      drawLine(last[0], last[1], x, y)
+      last = [x, y]
+    }
+  }
+
+  canvas.onmouseup = () => {
+    painting = false
+  }
+}
+
+function touchDraw(canvas) {
+  canvas.ontouchstart = (e) => {
+    let x = e.touches[0].clientX
+    let y = e.touches[0].clientY
+    last = [x, y]
+  }
+  canvas.ontouchmove = (e) => {
+    let x = e.touches[0].clientX
+    let y = e.touches[0].clientY
+    drawLine(last[0], last[1], x, y)
+    last = [x, y]
+  }
+}
+
 function drawLine(x1, y1, x2, y2) {
   ctx.lineWidth = lineWidth
   console.log(lineWidth)
@@ -134,7 +158,3 @@ function drawLine(x1, y1, x2, y2) {
   ctx.lineTo(x2, y2)
   ctx.stroke()
 }
-
-sizeSwitcher()
-
-colorSwitcher()
