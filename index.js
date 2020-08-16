@@ -5,9 +5,13 @@ let ctx = canvas.getContext('2d')
 
 
 let lineWidth = 8
+let black = document.getElementById('black')
+let red = document.getElementById('red')
+let green = document.getElementById('green')
+let blue = document.getElementById('blue')
+let colors = document.querySelectorAll('ol.colors > li')
 let thin = document.getElementById('thin')
 let thick = document.getElementById('thick')
-
 let clear = document.getElementById('clear')
 let save = document.getElementById('save')
 
@@ -50,6 +54,42 @@ if (isTouchDevice) {
     painting = false
   }
 }
+
+function colorSwitcher() {
+  black.onclick = function () {
+    ctx.fillStyle = 'black'
+    ctx.strokeStyle = 'black'
+    colors.forEach((color) => {
+      color.classList.remove('active')
+    })
+    black.classList.add('active')
+  }
+  red.onclick = function () {
+    ctx.fillStyle = 'red'
+    ctx.strokeStyle = 'red'
+    colors.forEach((color) => {
+      color.classList.remove('active')
+    })
+    red.classList.add('active')
+  }
+  green.onclick = function () {
+    ctx.fillStyle = 'green'
+    ctx.strokeStyle = 'green'
+    colors.forEach((color) => {
+      color.classList.remove('active')
+    })
+    green.classList.add('active')
+  }
+  blue.onclick = function () {
+    ctx.fillStyle = 'blue'
+    ctx.strokeStyle = 'blue'
+    colors.forEach((color) => {
+      color.classList.remove('active')
+    })
+    blue.classList.add('active')
+  }
+}
+
 
 function sizeSwitcher() {
   thin.onclick = function () {
@@ -96,3 +136,5 @@ function drawLine(x1, y1, x2, y2) {
 }
 
 sizeSwitcher()
+
+colorSwitcher()
