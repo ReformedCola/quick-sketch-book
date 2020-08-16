@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <title>Easy Sketch</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Easy Sketch</title>
 </head>
 <body>
-    <canvas id="canvas" width="300" height="300"></canvas>
-    <div class="actions">
-        <svg>
-
-        </svg>
-        <svg>
-
-        </svg>
-        <svg>
-
-        </svg>
-        <svg>
-
-        </svg>
-    </div>
-    <ol class="colors">
-        <li id="black" class="black active"></li>
-        <li id="red" class="red"></li>
-        <li id="green" class="green"></li>
-        <li id="blue" class="blue"></li>
-    </ol>
-    <ol class="sizes">
-        <li id="thin" class="thin active"></li>
-        <li id="thick" class="thick"></li>
-    </ol>
-    <script src="index.js"></script>
+  <canvas id="canvas" width="300" height="300"></canvas>
+  <div class="actions">
+    <svg id="pencil" class="icon active" aria-hidden="true">
+      <use xlink:href="#icon-pencil"></use>
+    </svg>
+    <svg id="eraser" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-eraser"></use>
+    </svg>
+    <svg id="clear" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-close"></use>
+    </svg>
+    <svg id="save" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-save"></use>
+    </svg>
+  </div>
+  <ol class="colors">
+    <li id="black" class="black active"></li>
+    <li id="red" class="red"></li>
+    <li id="green" class="green"></li>
+    <li id="blue" class="blue"></li>
+  </ol>
+  <ol class="sizes">
+    <li id="thin" class="thin active"></li>
+    <li id="thick" class="thick"></li>
+  </ol>
+  <script src="//at.alicdn.com/t/font_2008866_7e0ppc9uwel.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
