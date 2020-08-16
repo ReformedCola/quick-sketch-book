@@ -98,3 +98,8 @@ body {
   width: 20px;
   border-top: 4px solid black;
 }
+
+.sizes > li.active {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.95);
+  transform: scale(1.2);
+}
