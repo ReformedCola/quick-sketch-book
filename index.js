@@ -115,16 +115,6 @@ function pencilOrEraser(pencil, eraser) {
   }
 }
 
-function changeColor(colorName, colorLi) {
-  ctx.fillStyle = colorName
-  ctx.strokeStyle = colorName
-  colors.forEach((color) => {
-    color.classList.remove('active')
-  })
-  colorLi.classList.add('active')
-}
-
-
 function colorSwitcher() {
   black.onclick = function () {
     changeColor('black', black)
@@ -140,14 +130,31 @@ function colorSwitcher() {
   }
 }
 
+function changeColor(colorName, colorLi) {
+  ctx.fillStyle = colorName
+  ctx.strokeStyle = colorName
+  colors.forEach((color) => {
+    color.classList.remove('active')
+  })
+  colorLi.classList.add('active')
+}
+
 function sizeSwitcher() {
   thin.onclick = function () {
+    changeSize(thin)
+  }
+  thick.onclick = function () {
+    changeSize(thick)
+  }
+}
+
+function changeSize(sizeLi) {
+  if (sizeLi === thin) {
     lineWidth = 3
     thick.classList.remove('active')
     thin.classList.add('active')
-  }
-  thick.onclick = function () {
-    lineWidth = 8
+  } else if (sizeLi === thick) {
+    lineWidth = 20
     thin.classList.remove('active')
     thick.classList.add('active')
   }
