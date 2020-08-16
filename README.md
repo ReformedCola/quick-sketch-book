@@ -1,6 +1,8 @@
-# Basic Painting with Canvas
+# Quick Sketch Book
+
+A quick sketch book for drawing and writing quick notes, and it's built with Canvas API provided by H5.
 
 Compatible with both pc and phones.
 
-## How to use
-Just click on the website with mouse or touch on the phone screen to start drawing.
+## Preview
+[Click here to view the sketch book](http://colachick.com/quick-sketch-book/)
