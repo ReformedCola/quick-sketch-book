@@ -115,39 +115,28 @@ function pencilOrEraser(pencil, eraser) {
   }
 }
 
+function changeColor(colorName, colorLi) {
+  ctx.fillStyle = colorName
+  ctx.strokeStyle = colorName
+  colors.forEach((color) => {
+    color.classList.remove('active')
+  })
+  colorLi.classList.add('active')
+}
+
 
 function colorSwitcher() {
   black.onclick = function () {
-    ctx.fillStyle = 'black'
-    ctx.strokeStyle = 'black'
-    colors.forEach((color) => {
-      color.classList.remove('active')
-    })
-    black.classList.add('active')
+    changeColor('black', black)
   }
   red.onclick = function () {
-    ctx.fillStyle = 'red'
-    ctx.strokeStyle = 'red'
-    colors.forEach((color) => {
-      color.classList.remove('active')
-    })
-    red.classList.add('active')
+    changeColor('red', red)
   }
   green.onclick = function () {
-    ctx.fillStyle = 'green'
-    ctx.strokeStyle = 'green'
-    colors.forEach((color) => {
-      color.classList.remove('active')
-    })
-    green.classList.add('active')
+    changeColor('green', green)
   }
   blue.onclick = function () {
-    ctx.fillStyle = 'blue'
-    ctx.strokeStyle = 'blue'
-    colors.forEach((color) => {
-      color.classList.remove('active')
-    })
-    blue.classList.add('active')
+    changeColor('blue', blue)
   }
 }
 
