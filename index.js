@@ -22,7 +22,10 @@ ctx.lineCap = 'round'
 let lineWidth = 8
 let painting = false
 let isEraser = false
-let last = []
+let lastPos = {
+  x: undefined,
+  y: undefined
+}
 
 mouseOrTouch(canvas, ctx)
 
@@ -54,7 +57,7 @@ function mouseDraw(canvas, ctx) {
     if (isEraser) {
       ctx.clearRect(x, y, 10, 10)
     } else {
-      last = [x, y]
+      lastPos = {x, y}
     }
   }
 
@@ -67,8 +70,8 @@ function mouseDraw(canvas, ctx) {
     if (isEraser) {
       ctx.clearRect(x - 5, y - 5, 20, 20)
     } else {
-      drawLine(last[0], last[1], x, y)
-      last = [x, y]
+      drawLine(lastPos.x, lastPos.y, x, y)
+      lastPos = {x, y}
     }
   }
 
@@ -84,7 +87,7 @@ function touchDraw(canvas, ctx) {
     if (isEraser) {
       ctx.clearRect(x, y, 10, 10)
     } else {
-      last = [x, y]
+      lastPos = {x, y}
     }
   }
   canvas.ontouchmove = (e) => {
@@ -93,8 +96,8 @@ function touchDraw(canvas, ctx) {
     if (isEraser) {
       ctx.clearRect(x - 5, y - 5, 20, 20)
     } else {
-      drawLine(last[0], last[1], x, y)
-      last = [x, y]
+      drawLine(lastPos.x, lastPos.y, x, y)
+      lastPos = {x, y}
     }
   }
 }
@@ -181,7 +184,6 @@ function saveImage() {
 
 function drawLine(x1, y1, x2, y2) {
   ctx.lineWidth = lineWidth
-  console.log(lineWidth)
   ctx.beginPath()
   ctx.moveTo(x1, y1)
   ctx.lineTo(x2, y2)
