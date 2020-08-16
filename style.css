@@ -12,6 +12,33 @@ body {
   display: block;
 }
 
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.actions {
+  padding: 20px;
+  position: fixed;
+  top: 10px;
+  left: 0;
+}
+
+.actions svg {
+  width: 2em;
+  height: 2em;
+  transition: all .3s;
+  margin: 0 10px;
+}
+
+.actions svg.active {
+  fill: red;
+  transform: scale(1.2);
+}
+
 .colors {
   position: fixed;
   top: 100px;
