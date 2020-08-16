@@ -49,7 +49,6 @@ function mouseOrTouch(canvas, ctx) {
 }
 
 function mouseDraw(canvas, ctx) {
-  console.log(canvas)
   canvas.onmousedown = (e) => {
     let x = e.clientX
     let y = e.clientY
